@@ -30,6 +30,9 @@ class CommandManager
             @register data
         @emitter.on 'cmd.remove', (event, data) =>
             @remove data
+        option = { resGetPath: '/locales/__lng__/__ns__.json', useLocalStorage: true , useDataAttrOptions:true}
+        $.i18n.init option
+
 
     # Register a command
     register        : (data) =>
@@ -52,7 +55,7 @@ class CommandManager
 
     onKick          : (data) =>
         #document.cookie = 'connect.sid=; expires=Thu, 01-Jan-70 00:00:01 GMT;'
-        text    = "#{window.Voicious.currentUser.name} has been kicked out! (#{data.message})"
+        text    = $.t('Test')
         message = { type : 'chat.error', params : { text : text } }
         @emitter.trigger 'message.sendtoall', message
         window.location.replace '/'
