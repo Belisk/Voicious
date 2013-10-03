@@ -37,7 +37,7 @@ class CommandManager
     # Register a command
     register        : (data) =>
         @commands[data.name] = data.callback
-    
+
     # Remove a command from the list
     remove          : (data) =>
         @commands[data] = null
@@ -55,11 +55,11 @@ class CommandManager
 
     onKick          : (data) =>
         #document.cookie = 'connect.sid=; expires=Thu, 01-Jan-70 00:00:01 GMT;'
-        text    = $.t('Test')
+        text    = $.t('app.Test')
         message = { type : 'chat.error', params : { text : text } }
         @emitter.trigger 'message.sendtoall', message
         window.location.replace '/'
-    
+
     onMe            : (data) =>
         @emitter.trigger 'chat.me', { text : data.text }
 
